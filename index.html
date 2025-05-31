@@ -442,6 +442,47 @@
             text-align: right;
         }
 
+        .message-actions {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            display: none;
+        }
+
+        .message:hover .message-actions {
+            display: block;
+        }
+
+        .action-icon {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .action-icon:hover {
+            background: var(--danger);
+            transform: scale(1.1);
+        }
+
+        .withdrawn-message {
+            opacity: 0.7;
+            background: rgba(60, 60, 80, 0.3);
+        }
+
+        .withdrawn-message .message-text {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
         .chat-input-area {
             padding: 20px;
             background: rgba(30, 35, 60, 0.7);
@@ -536,6 +577,7 @@
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .action-btn:hover {
@@ -545,6 +587,16 @@
 
         .action-btn i {
             margin-right: 5px;
+        }
+
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
         }
 
         .post-btn {
@@ -563,6 +615,43 @@
             box-shadow: 0 5px 15px rgba(109, 140, 255, 0.4);
         }
 
+        .preview-container {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .media-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .media-preview img, .media-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-media {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--danger);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
         .posts-container {
             margin-top: 30px;
         }
@@ -573,6 +662,7 @@
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid var(--card-border);
+            position: relative;
         }
 
         .post-header {
@@ -613,17 +703,28 @@
             line-height: 1.6;
         }
 
-        .post-image {
-            width: 100%;
-            border-radius: 10px;
+        .post-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #2a3048, #1a1f36);
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
+        }
+
+        .post-media-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 150px;
+            position: relative;
+        }
+
+        .post-media-item img, .post-media-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-media-item video {
+            background: black;
         }
 
         .post-actions-bar {
@@ -648,6 +749,86 @@
 
         .post-action i {
             margin-right: 5px;
+        }
+
+        .post-action.liked {
+            color: var(--success);
+        }
+
+        .post-comments {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .comment {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .comment-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+
+        .comment-content {
+            flex: 1;
+            background: rgba(40, 45, 75, 0.5);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .comment-user {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .comment-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            background: rgba(40, 45, 75, 0.5);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            color: var(--text);
+            margin-top: 10px;
+        }
+
+        .post-actions-top {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+        }
+
+        .post-action-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .post-action-btn:hover {
+            background: var(--danger);
+            transform: scale(1.1);
         }
 
         /* 内容搜索界面 */
@@ -1062,13 +1243,20 @@
                         <div class="post-avatar" id="currentUserAvatar">华</div>
                         <textarea class="post-input" id="postContent" placeholder="分享你的想法..."></textarea>
                     </div>
+                    
+                    <div class="preview-container" id="mediaPreview">
+                        <!-- 媒体预览区域 -->
+                    </div>
+                    
                     <div class="post-actions">
                         <div class="action-buttons">
                             <div class="action-btn">
                                 <i class="fas fa-image"></i> 图片
+                                <input type="file" class="file-input" id="imageUpload" accept="image/*" multiple>
                             </div>
                             <div class="action-btn">
                                 <i class="fas fa-video"></i> 视频
+                                <input type="file" class="file-input" id="videoUpload" accept="video/*" multiple>
                             </div>
                             <div class="action-btn">
                                 <i class="fas fa-map-marker-alt"></i> 位置
@@ -1243,30 +1431,56 @@
 
         // 聊天消息存储
         let chatMessages = [
-            { sender: "辉", receiver: "华", content: "嗨，华！最近怎么样？", timestamp: "昨天 10:30" },
-            { sender: "华", receiver: "辉", content: "我很好！刚刚完成了新项目，你呢？", timestamp: "昨天 10:32" },
-            { sender: "辉", receiver: "华", content: "太棒了！我这边也进展顺利。对了，你看昨晚的比赛了吗？", timestamp: "昨天 10:33" },
-            { sender: "华", receiver: "辉", content: "看了！最后时刻的绝杀太精彩了！", timestamp: "昨天 10:35" },
-            { sender: "辉", receiver: "华", content: "完全同意！对了，周末有空一起吃饭吗？", timestamp: "今天 09:15" },
-            { sender: "华", receiver: "辉", content: "好啊，周六晚上怎么样？我知道一家新开的餐厅不错", timestamp: "今天 09:18" },
-            { sender: "辉", receiver: "华", content: "完美！把地址发给我吧，期待见面！", timestamp: "今天 09:20" }
+            { id: 1, sender: "辉", receiver: "华", content: "嗨，华！最近怎么样？", timestamp: "昨天 10:30", withdrawn: false },
+            { id: 2, sender: "华", receiver: "辉", content: "我很好！刚刚完成了新项目，你呢？", timestamp: "昨天 10:32", withdrawn: false },
+            { id: 3, sender: "辉", receiver: "华", content: "太棒了！我这边也进展顺利。对了，你看昨晚的比赛了吗？", timestamp: "昨天 10:33", withdrawn: false },
+            { id: 4, sender: "华", receiver: "辉", content: "看了！最后时刻的绝杀太精彩了！", timestamp: "昨天 10:35", withdrawn: false },
+            { id: 5, sender: "辉", receiver: "华", content: "完全同意！对了，周末有空一起吃饭吗？", timestamp: "今天 09:15", withdrawn: false },
+            { id: 6, sender: "华", receiver: "辉", content: "好啊，周六晚上怎么样？我知道一家新开的餐厅不错", timestamp: "今天 09:18", withdrawn: false },
+            { id: 7, sender: "辉", receiver: "华", content: "完美！把地址发给我吧，期待见面！", timestamp: "今天 09:20", withdrawn: false }
         ];
 
         // 动态数据
         let posts = [
             {
+                id: 1,
                 user: "辉",
                 content: "刚刚完成了新项目的UI设计，使用深色主题和霓虹效果打造现代科技感！",
                 time: "2小时前",
-                image: true
+                media: [
+                    { type: "image", url: "https://picsum.photos/300/200?random=1" },
+                    { type: "image", url: "https://picsum.photos/300/200?random=2" }
+                ],
+                likes: 12,
+                comments: 3,
+                liked: false,
+                commentsList: [
+                    { user: "华", content: "设计得太棒了！" },
+                    { user: "辉", content: "谢谢！" }
+                ],
+                withdrawn: false
             },
             {
+                id: 2,
                 user: "华",
                 content: "周末徒步旅行发现的美丽风景，大自然总能给人带来宁静和灵感。",
                 time: "昨天",
-                image: true
+                media: [
+                    { type: "image", url: "https://picsum.photos/300/200?random=3" },
+                    { type: "video", url: "https://player.vimeo.com/video/76979871?h=8272103f6e" }
+                ],
+                likes: 24,
+                comments: 5,
+                liked: true,
+                commentsList: [
+                    { user: "辉", content: "这地方太美了，下次带我去吧！" }
+                ],
+                withdrawn: false
             }
         ];
+
+        // 当前用户上传的媒体文件
+        let uploadedMedia = [];
 
         // DOM元素
         const loginPage = document.getElementById('loginPage');
@@ -1297,6 +1511,9 @@
         const publishPostBtn = document.getElementById('publishPostBtn');
         const searchResults = document.getElementById('searchResults');
         const globalSearch = document.getElementById('globalSearch');
+        const mediaPreview = document.getElementById('mediaPreview');
+        const imageUpload = document.getElementById('imageUpload');
+        const videoUpload = document.getElementById('videoUpload');
         
         // 当前登录用户
         let currentUser = null;
@@ -1315,6 +1532,98 @@
             
             // 设置在线状态
             setOnlineStatus();
+            
+            // 设置媒体上传事件
+            setupMediaUpload();
+        }
+
+        // 设置媒体上传
+        function setupMediaUpload() {
+            imageUpload.addEventListener('change', function(e) {
+                handleFileUpload(e.target.files, 'image');
+            });
+            
+            videoUpload.addEventListener('change', function(e) {
+                handleFileUpload(e.target.files, 'video');
+            });
+        }
+
+        // 处理文件上传
+        function handleFileUpload(files, type) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const media = {
+                        type: type,
+                        url: e.target.result,
+                        file: file
+                    };
+                    
+                    uploadedMedia.push(media);
+                    renderMediaPreview();
+                };
+                
+                if (type === 'image') {
+                    reader.readAsDataURL(file);
+                } else {
+                    // 对于视频，我们只显示一个预览图
+                    const videoPreview = document.createElement('video');
+                    videoPreview.src = URL.createObjectURL(file);
+                    videoPreview.onloadedmetadata = function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = videoPreview.videoWidth;
+                        canvas.height = videoPreview.videoHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
+                        
+                        const media = {
+                            type: type,
+                            url: canvas.toDataURL('image/jpeg'),
+                            file: file
+                        };
+                        
+                        uploadedMedia.push(media);
+                        renderMediaPreview();
+                    };
+                }
+            }
+        }
+
+        // 渲染媒体预览
+        function renderMediaPreview() {
+            mediaPreview.innerHTML = '';
+            
+            uploadedMedia.forEach((media, index) => {
+                const preview = document.createElement('div');
+                preview.classList.add('media-preview');
+                
+                if (media.type === 'image') {
+                    preview.innerHTML = `
+                        <img src="${media.url}" alt="预览">
+                        <div class="remove-media" data-index="${index}">×</div>
+                    `;
+                } else {
+                    preview.innerHTML = `
+                        <div style="background: #2a3048; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-play-circle" style="font-size: 2rem;"></i>
+                        </div>
+                        <div class="remove-media" data-index="${index}">×</div>
+                    `;
+                }
+                
+                mediaPreview.appendChild(preview);
+            });
+            
+            // 添加删除事件
+            document.querySelectorAll('.remove-media').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    uploadedMedia.splice(index, 1);
+                    renderMediaPreview();
+                });
+            });
         }
 
         // 渲染聊天消息
@@ -1335,9 +1644,20 @@
                         messageElement.classList.add('received');
                     }
                     
+                    if (msg.withdrawn) {
+                        messageElement.classList.add('withdrawn-message');
+                    }
+                    
                     messageElement.innerHTML = `
-                        <div class="message-text">${msg.content}</div>
+                        <div class="message-text">${msg.withdrawn ? '[该消息已被撤回]' : msg.content}</div>
                         <div class="message-time">${msg.timestamp}</div>
+                        ${msg.sender === currentUser && !msg.withdrawn ? `
+                        <div class="message-actions">
+                            <div class="action-icon withdraw-btn" data-id="${msg.id}">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        ` : ''}
                     `;
                     
                     chatMessagesContainer.appendChild(messageElement);
@@ -1346,6 +1666,23 @@
             
             // 滚动到底部
             chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            
+            // 添加撤回事件
+            document.querySelectorAll('.withdraw-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const msgId = parseInt(this.dataset.id);
+                    withdrawMessage(msgId);
+                });
+            });
+        }
+
+        // 撤回消息
+        function withdrawMessage(msgId) {
+            const message = chatMessages.find(msg => msg.id === msgId);
+            if (message) {
+                message.withdrawn = true;
+                renderChatMessages();
+            }
         }
 
         // 渲染动态
@@ -1353,10 +1690,62 @@
             postsContainer.innerHTML = '';
             
             posts.forEach(post => {
+                if (post.withdrawn) return;
+                
                 const postElement = document.createElement('div');
                 postElement.classList.add('post-card');
                 
+                let mediaHTML = '';
+                if (post.media && post.media.length > 0) {
+                    mediaHTML = `<div class="post-media">`;
+                    post.media.forEach(media => {
+                        if (media.type === 'image') {
+                            mediaHTML += `
+                                <div class="post-media-item">
+                                    <img src="${media.url}" alt="动态图片">
+                                </div>
+                            `;
+                        } else {
+                            mediaHTML += `
+                                <div class="post-media-item">
+                                    <video controls>
+                                        <source src="${media.url}" type="video/mp4">
+                                        您的浏览器不支持视频标签。
+                                    </video>
+                                </div>
+                            `;
+                        }
+                    });
+                    mediaHTML += `</div>`;
+                }
+                
+                let commentsHTML = '';
+                if (post.commentsList && post.commentsList.length > 0) {
+                    commentsHTML = `<div class="post-comments">`;
+                    post.commentsList.forEach(comment => {
+                        commentsHTML += `
+                            <div class="comment">
+                                <div class="comment-avatar">${comment.user.charAt(0)}</div>
+                                <div class="comment-content">
+                                    <div class="comment-user">${comment.user}</div>
+                                    <div class="comment-text">${comment.content}</div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    commentsHTML += `
+                        <input type="text" class="comment-input" placeholder="添加评论...">
+                    </div>`;
+                }
+                
                 postElement.innerHTML = `
+                    <div class="post-actions-top">
+                        ${post.user === currentUser ? `
+                        <div class="post-action-btn withdraw-post" data-id="${post.id}">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                        ` : ''}
+                    </div>
                     <div class="post-header">
                         <div class="post-user-avatar">${post.user.charAt(0)}</div>
                         <div class="post-user-info">
@@ -1365,24 +1754,62 @@
                         </div>
                     </div>
                     <div class="post-content">${post.content}</div>
-                    ${post.image ? `<div class="post-image">
-                        <i class="fas fa-image"></i> ${post.user === "辉" ? "项目设计预览图" : "山景照片"}
-                    </div>` : ''}
+                    ${mediaHTML}
                     <div class="post-actions-bar">
-                        <div class="post-action">
-                            <i class="fas fa-thumbs-up"></i> 点赞
+                        <div class="post-action like-btn ${post.liked ? 'liked' : ''}" data-id="${post.id}">
+                            <i class="fas fa-thumbs-up"></i> ${post.likes > 0 ? post.likes : ''} 点赞
                         </div>
                         <div class="post-action">
-                            <i class="fas fa-comment"></i> 评论
+                            <i class="fas fa-comment"></i> ${post.comments > 0 ? post.comments : ''} 评论
                         </div>
                         <div class="post-action">
                             <i class="fas fa-share"></i> 分享
                         </div>
                     </div>
+                    ${commentsHTML}
                 `;
                 
                 postsContainer.appendChild(postElement);
             });
+            
+            // 添加点赞事件
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const postId = parseInt(this.dataset.id);
+                    likePost(postId);
+                });
+            });
+            
+            // 添加撤回动态事件
+            document.querySelectorAll('.withdraw-post').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const postId = parseInt(this.dataset.id);
+                    withdrawPost(postId);
+                });
+            });
+        }
+
+        // 点赞动态
+        function likePost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                if (post.liked) {
+                    post.likes--;
+                } else {
+                    post.likes++;
+                }
+                post.liked = !post.liked;
+                renderPosts();
+            }
+        }
+
+        // 撤回动态
+        function withdrawPost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.withdrawn = true;
+                renderPosts();
+            }
         }
 
         // 渲染搜索结果
@@ -1391,7 +1818,7 @@
             
             // 聊天消息搜索结果
             chatMessages.forEach(msg => {
-                if (msg.sender === currentUser || msg.receiver === currentUser) {
+                if ((msg.sender === currentUser || msg.receiver === currentUser) && !msg.withdrawn) {
                     const resultElement = document.createElement('div');
                     resultElement.classList.add('result-card');
                     
@@ -1410,19 +1837,21 @@
             
             // 动态搜索结果
             posts.forEach(post => {
-                const resultElement = document.createElement('div');
-                resultElement.classList.add('result-card');
-                
-                resultElement.innerHTML = `
-                    <div class="result-title">${post.user}的动态</div>
-                    <div class="result-content">${post.content}</div>
-                    <div class="result-meta">
-                        <span>${post.user} · ${post.time}</span>
-                        <span>动态</span>
-                    </div>
-                `;
-                
-                searchResults.appendChild(resultElement);
+                if (!post.withdrawn) {
+                    const resultElement = document.createElement('div');
+                    resultElement.classList.add('result-card');
+                    
+                    resultElement.innerHTML = `
+                        <div class="result-title">${post.user}的动态</div>
+                        <div class="result-content">${post.content}</div>
+                        <div class="result-meta">
+                            <span>${post.user} · ${post.time}</span>
+                            <span>动态</span>
+                        </div>
+                    `;
+                    
+                    searchResults.appendChild(resultElement);
+                }
             });
         }
 
@@ -1460,6 +1889,9 @@
                 chatPartnerAvatar.textContent = chatPartner.charAt(0);
                 chatPartnerName.textContent = chatPartner;
                 chatPartnerAvatar.style.background = `linear-gradient(135deg, ${users[chatPartner].color}, ${users[chatPartner].color}aa)`;
+                
+                // 设置当前用户头像
+                document.getElementById('currentUserAvatar').textContent = username.charAt(0);
                 
                 // 检查是否是辉用户，显示主题编辑功能
                 if (username === '辉') {
@@ -1545,10 +1977,12 @@
             if (messageText) {
                 // 添加消息到存储
                 const newMessage = {
+                    id: Date.now(),
                     sender: currentUser,
                     receiver: chatPartner,
                     content: messageText,
-                    timestamp: "刚刚"
+                    timestamp: "刚刚",
+                    withdrawn: false
                 };
                 
                 chatMessages.push(newMessage);
@@ -1569,10 +2003,12 @@
                     const randomReply = replies[Math.floor(Math.random() * replies.length)];
                     
                     const replyMessage = {
+                        id: Date.now() + 1,
                         sender: chatPartner,
                         receiver: currentUser,
                         content: randomReply,
-                        timestamp: "刚刚"
+                        timestamp: "刚刚",
+                        withdrawn: false
                     };
                     
                     chatMessages.push(replyMessage);
@@ -1584,18 +2020,33 @@
         // 发布动态功能
         publishPostBtn.addEventListener('click', function() {
             const postText = postContent.value.trim();
-            if (postText) {
+            if (postText || uploadedMedia.length > 0) {
                 const newPost = {
+                    id: Date.now(),
                     user: currentUser,
                     content: postText,
                     time: "刚刚",
-                    image: false
+                    media: uploadedMedia.map(media => ({
+                        type: media.type,
+                        url: media.type === 'image' ? 
+                            'https://picsum.photos/300/200?random=' + Math.floor(Math.random() * 100) : 
+                            'https://player.vimeo.com/video/76979871?h=8272103f6e'
+                    })),
+                    likes: 0,
+                    comments: 0,
+                    liked: false,
+                    commentsList: [],
+                    withdrawn: false
                 };
                 
                 posts.unshift(newPost);
                 renderPosts();
                 postContent.value = '';
+                uploadedMedia = [];
+                renderMediaPreview();
                 alert('动态发布成功！');
+            } else {
+                alert('请输入内容或上传媒体文件');
             }
         });
         
